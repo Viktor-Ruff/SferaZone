@@ -15,8 +15,9 @@
         <com.google.android.material.appbar.MaterialToolbar
             style="@style/Widget.MaterialComponents.Toolbar.Primary"
             android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
+            android:layout_height="?actionBarSize"
             android:background="@color/background"
+            app:layout_scrollFlags="scroll|enterAlways|snap"
             app:menu="@menu/menu_top_app_bar"
             app:navigationIcon="@drawable/ic_menu"
             app:title="@string/user_id"
@@ -29,7 +30,6 @@
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
         android:overScrollMode="never">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,6 +37,7 @@
             android:layout_height="wrap_content">
 
             <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_marginTop="56dp"
                 android:id="@+id/profile_image"
                 android:layout_width="160dp"
                 android:layout_height="160dp"
@@ -187,13 +188,13 @@
                 android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/about_me"
-                app:hintTextColor="@color/second_color"
                 android:orientation="horizontal"
                 android:textColorHint="@color/main_color1"
                 app:boxStrokeColor="@color/second_color"
                 app:counterEnabled="true"
                 app:counterMaxLength="300"
                 app:counterTextColor="@color/main_color1"
+                app:hintTextColor="@color/second_color"
                 app:layout_constraintTop_toBottomOf="@+id/bt_questionnaries"
                 tools:layout_editor_absoluteX="16dp">
 
@@ -203,7 +204,7 @@
                     android:background="@color/background"
                     android:fontFamily="@font/inter_regular"
                     android:gravity="start"
-                    android:maxLength="300"
+                    android:maxLength="301"
                     android:paddingStart="0dp"
                     android:paddingEnd="0dp"
                     android:text="@string/about_me_text"
