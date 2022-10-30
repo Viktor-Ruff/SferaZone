@@ -32,5 +32,17 @@
         ...
     </style>
 
+    <style name="TextIDStyle">
+        <item name="android:lineSpacingExtra">2sp</item>
+
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+    </style>
+
+    <style name="CornerImageStyle" parent="">
+        <item name="cornerSize">4dp</item>
+    </style>
+
 
 </resources>

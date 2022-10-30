@@ -21,6 +21,7 @@
             app:menu="@menu/menu_top_app_bar"
             app:navigationIcon="@drawable/ic_menu"
             app:title="@string/user_id"
+            app:titleTextAppearance="@style/TextIDStyle"
             app:titleTextColor="@color/main_color" />
 
     </com.google.android.material.appbar.AppBarLayout>
@@ -28,187 +29,163 @@
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:overScrollMode="never">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:orientation="vertical">
+            android:layout_marginTop="16dp">
 
-            <com.google.android.material.card.MaterialCardView
-                android:id="@+id/profile_card"
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/profile_image"
+                android:layout_width="160dp"
+                android:layout_height="160dp"
+                android:src="@drawable/im_user_5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/profile_points"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:background="@drawable/bg_circle"
+                android:fontFamily="@font/inter_regular"
+                android:gravity="center"
+                android:text="@string/profile_points"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                app:layout_constraintBottom_toBottomOf="@+id/profile_image"
+                app:layout_constraintStart_toStartOf="@+id/profile_image" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="@font/inter_medium"
+                android:gravity="center"
+                android:text="@string/profile_name"
+                android:textColor="@color/main_color"
+                android:textSize="18sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/profile_image" />
+
+            <ImageView
+                android:id="@+id/ivLanguage"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/ic_world"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/tvLanguage"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:background="@color/background">
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="24dp"
+                android:text="@string/languages"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/ivLanguage"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@color/background">
-
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:id="@+id/profile_image"
-                        android:layout_width="160dp"
-                        android:layout_height="160dp"
-                        android:src="@drawable/avatar"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/profile_points"
-                        android:layout_width="48dp"
-                        android:layout_height="48dp"
-                        android:background="@drawable/circle"
-                        android:fontFamily="@font/inter_regular"
-                        android:gravity="center"
-                        android:text="@string/profile_points"
-                        android:textColor="@color/white"
-                        android:textSize="24sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/profile_image"
-                        app:layout_constraintStart_toStartOf="parent">
-
-                    </TextView>
-
-                    <TextView
-                        android:id="@+id/textView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:fontFamily="@font/inter_medium"
-                        android:gravity="center"
-                        android:text="@string/profile_name"
-                        android:textColor="@color/main_color"
-                        android:textSize="18sp"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/profile_image" />
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-            </com.google.android.material.card.MaterialCardView>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp">
-
-                <ImageView
-                    android:id="@+id/ivLanguage"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="18dp"
-                    android:src="@drawable/ic_world"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLanguage"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="18dp"
-                    android:text="@string/languages"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/ivLanguage"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="@string/choose"
-                    android:textColor="@color/second_color"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView2"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="24dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="@string/choose"
+                android:textColor="@color/second_color"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
 
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/ivLocation"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="23dp"
+                android:src="@drawable/ic_location"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivLanguage" />
 
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="23dp"
+                android:text="@string/location"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:layout_constraintStart_toEndOf="@+id/ivLocation"
+                app:layout_constraintTop_toBottomOf="@+id/tvLanguage" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="23dp">
-
-                <ImageView
-                    android:id="@+id/ivLocation"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="18dp"
-                    android:src="@drawable/ic_location"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/tvLocation"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginStart="18dp"
-                    android:text="@string/location"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    app:layout_constraintStart_toEndOf="@+id/ivLocation"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:layout_marginEnd="16dp"
-                    android:fontFamily="@font/inter_regular"
-                    android:text="@string/choose"
-                    android:textColor="@color/second_color"
-                    android:textSize="14sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginTop="23dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/inter_regular"
+                android:text="@string/choose"
+                android:textColor="@color/second_color"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/user_image_recycler"
+                android:id="@+id/user_images_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
+                android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:listitem="@layout/item_main_image" />
+                app:layout_constraintDimensionRatio="3:1"
+                app:layout_constraintTop_toBottomOf="@id/tvLocation"
+                tools:listitem="@layout/item_user_images" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+            <Button
+                android:id="@+id/bt_questionnaries"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="20dp"
+                android:layout_marginEnd="4dp"
+                android:text="@string/questionnaries"
+                app:layout_constraintEnd_toStartOf="@+id/bt_people"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/user_images_recycler" />
+
+            <Button
+                android:id="@+id/bt_people"
+                android:layout_width="0dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginTop="20dp"
                 android:layout_marginEnd="16dp"
-                android:layout_marginBottom="26dp"
-                android:orientation="horizontal">
+                android:text="@string/people"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/bt_questionnaries"
+                app:layout_constraintTop_toBottomOf="@+id/user_images_recycler" />
 
-                <Button
-
-                    android:layout_width="0dp"
-                    android:layout_height="36dp"
-                    android:layout_marginEnd="4dp"
-                    android:layout_weight="1"
-                    android:text="@string/questionnaries" />
-
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="36dp"
-                    android:layout_marginStart="4dp"
-                    android:layout_weight="1"
-                    android:text="@string/people" />
-
-            </LinearLayout>
-
-            <com.google.android.material.textfield.TextInputLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/textInputLayout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="4dp"
                 android:layout_marginEnd="16dp"
                 android:hint="@string/about_me"
                 android:orientation="horizontal"
@@ -217,7 +194,9 @@
                 app:counterEnabled="true"
                 app:counterMaxLength="300"
                 app:counterTextColor="@color/main_color1"
-                app:endIconMode="clear_text">
+                app:endIconMode="clear_text"
+                app:layout_constraintTop_toBottomOf="@+id/bt_questionnaries"
+                tools:layout_editor_absoluteX="16dp">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:layout_width="match_parent"
@@ -236,6 +215,7 @@
             </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/switchCompat"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -247,17 +227,22 @@
                 android:textColor="@color/main_color"
                 android:textSize="16sp"
                 android:theme="@style/MySwitch"
-                app:useMaterialThemeColors="false" />
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout"
+                app:useMaterialThemeColors="false"
+                tools:layout_editor_absoluteX="16dp" />
 
             <Button
+                android:id="@+id/bt_Wishes"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="12dp"
                 android:layout_marginEnd="16dp"
-                android:text="@string/bt3_text" />
+                android:text="@string/bt3_text"
+                app:layout_constraintTop_toBottomOf="@+id/switchCompat" />
 
             <TextView
+                android:id="@+id/tv_moments"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -266,7 +251,8 @@
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/moments"
                 android:textColor="#9575CD"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/bt_Wishes" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/user_moments_recycler"
@@ -274,14 +260,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
                 android:orientation="horizontal"
+                android:overScrollMode="never"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="5"
+                app:layout_constraintTop_toBottomOf="@+id/tv_moments"
                 tools:listitem="@layout/item_moments_image" />
 
-
             <TextView
+                android:id="@+id/tv_chronicles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -290,47 +276,28 @@
                 android:fontFamily="@font/inter_medium"
                 android:text="@string/chronicles"
                 android:textColor="#9575CD"
-                android:textSize="14sp" />
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@+id/user_moments_recycler" />
 
 
             <androidx.recyclerview.widget.RecyclerView
-                android:id="@+id/user_chronicles_recycler1"
+                android:id="@+id/user_chronicles_recycler"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="0dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="10dp"
-                android:layout_marginEnd="16dp"
+                android:layout_marginEnd="11dp"
                 android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="3"
+                android:overScrollMode="never"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tv_chronicles"
                 tools:listitem="@layout/item_chronicles_image" />
 
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_chronicles_image" />
-
-            <androidx.recyclerview.widget.RecyclerView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:orientation="horizontal"
-                android:paddingBottom="16dp"
-                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:itemCount="3"
-                tools:listitem="@layout/item_chronicles_image" />
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
 
 </LinearLayout>
