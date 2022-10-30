@@ -12,7 +12,6 @@ import com.example.sferazone1.imageModel.Chronicles
 import com.example.sferazone1.imageModel.Moments
 import com.example.sferazone1.imageModel.UserImages
 
-
 class MainActivity : AppCompatActivity() {
 
     private lateinit var userImagesRecyclerView: RecyclerView
@@ -75,8 +74,6 @@ class MainActivity : AppCompatActivity() {
 
         chroniclesRecyclerView.layoutManager =
             GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
-
-
 
         chroniclesRecyclerView.adapter = ChroniclesAdapter(chroniclesList)
 
