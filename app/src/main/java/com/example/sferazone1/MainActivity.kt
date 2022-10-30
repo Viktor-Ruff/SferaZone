@@ -72,8 +72,11 @@ class MainActivity : AppCompatActivity() {
 
         chroniclesRecyclerView = findViewById(R.id.user_chronicles_recycler)
 
+
         chroniclesRecyclerView.layoutManager =
             GridLayoutManager(this, 3, GridLayoutManager.VERTICAL, false)
+
+
 
         chroniclesRecyclerView.adapter = ChroniclesAdapter(chroniclesList)
 
