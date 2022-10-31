@@ -1,9 +1,13 @@
 package com.example.sferazone1.adapters
+
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.sferazone1.R
-import com.example.sferazone1.imageModel.Chronicles
+
+import com.example.sferazone1.imageModel.ImageModel
 
 
 /**
@@ -11,8 +15,20 @@ import com.example.sferazone1.imageModel.Chronicles
  * Date: 29.10.2022
  * Time: 23:11
  */
-class ChroniclesAdapter(private val chroniclesImagesList: List<Chronicles>) :
-    RecyclerView.Adapter<ChroniclesViewHolder>() {
+class ChroniclesAdapter(private val chroniclesImagesList: List<ImageModel>) :
+    RecyclerView.Adapter<ChroniclesAdapter.ChroniclesViewHolder>() {
+
+    class ChroniclesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        private val chroniclesImageView: ImageView = itemView.findViewById(R.id.iv_chronicles_image)
+
+        fun bind(imageModel: ImageModel) {
+
+            chroniclesImageView.setImageResource(imageModel.userImage)
+
+        }
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ChroniclesViewHolder {
 

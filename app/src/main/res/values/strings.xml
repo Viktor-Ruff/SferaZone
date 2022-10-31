@@ -7,12 +7,12 @@
     <string name="choose">Choose</string>
     <string name="languages">Russian, English, German</string>
     <string name="location">New York city, USA</string>
-    <string name="questionnaries">Questionnaries</string>
-    <string name="people">People</string>
+    <string name="questionnaries">QUESTIONNARIES</string>
+    <string name="people">PEOPLE</string>
     <string name="about_me">About me</string>
     <string name="about_me_text">Жизнь будет гораздо проще и приятнее для каждого человека, если мы будем</string>
     <string name="dream_and_get">Dream and get</string>
-    <string name="bt3_text">Wishes</string>
+    <string name="bt_wishes_text">WISHES</string>
     <string name="moments">Moments</string>
     <string name="chronicles">Chronicles</string>
 </resources>

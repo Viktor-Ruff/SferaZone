@@ -8,9 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.sferazone1.adapters.ChroniclesAdapter
 import com.example.sferazone1.adapters.MomentsAdapter
 import com.example.sferazone1.adapters.UserImagesAdapter
-import com.example.sferazone1.imageModel.Chronicles
-import com.example.sferazone1.imageModel.Moments
-import com.example.sferazone1.imageModel.UserImages
+import com.example.sferazone1.imageModel.ImageModel
 
 class MainActivity : AppCompatActivity() {
 
@@ -22,35 +20,35 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val userImagesList: List<UserImages> = listOf(
-            UserImages(R.drawable.im_user_1),
-            UserImages(R.drawable.im_user_2),
-            UserImages(R.drawable.im_user_3),
-            UserImages(R.drawable.im_user_4)
+        val userImagesList: List<ImageModel> = listOf(
+            ImageModel(R.drawable.im_user_1),
+            ImageModel(R.drawable.im_user_2),
+            ImageModel(R.drawable.im_user_3),
+            ImageModel(R.drawable.im_user_4)
         )
 
-        val momentsList: List<Moments> = listOf(
-            Moments(R.drawable.im_moments_1),
-            Moments(R.drawable.im_moments_2),
-            Moments(R.drawable.im_moments_3),
-            Moments(R.drawable.im_moments_4),
-            Moments(R.drawable.im_moments_5),
-            Moments(R.drawable.im_moments_6),
+        val momentsList: List<ImageModel> = listOf(
+            ImageModel(R.drawable.im_moments_1),
+            ImageModel(R.drawable.im_moments_2),
+            ImageModel(R.drawable.im_moments_3),
+            ImageModel(R.drawable.im_moments_4),
+            ImageModel(R.drawable.im_moments_5),
+            ImageModel(R.drawable.im_moments_6),
         )
 
-        val chroniclesList: List<Chronicles> = listOf(
-            Chronicles(R.drawable.im_chronicles_1),
-            Chronicles(R.drawable.im_chronicles_2),
-            Chronicles(R.drawable.im_chronicles_3),
-            Chronicles(R.drawable.im_chronicles_4),
-            Chronicles(R.drawable.im_chronicles_5),
-            Chronicles(R.drawable.im_chronicles_6),
-            Chronicles(R.drawable.im_chronicles_7),
-            Chronicles(R.drawable.im_chronicles_8),
-            Chronicles(R.drawable.im_chronicles_9),
-            Chronicles(R.drawable.im_chronicles_10),
-            Chronicles(R.drawable.im_chronicles_11),
-            Chronicles(R.drawable.im_chronicles_12)
+        val chroniclesList: List<ImageModel> = listOf(
+            ImageModel(R.drawable.im_chronicles_1),
+            ImageModel(R.drawable.im_chronicles_2),
+            ImageModel(R.drawable.im_chronicles_3),
+            ImageModel(R.drawable.im_chronicles_4),
+            ImageModel(R.drawable.im_chronicles_5),
+            ImageModel(R.drawable.im_chronicles_6),
+            ImageModel(R.drawable.im_chronicles_7),
+            ImageModel(R.drawable.im_chronicles_8),
+            ImageModel(R.drawable.im_chronicles_9),
+            ImageModel(R.drawable.im_chronicles_10),
+            ImageModel(R.drawable.im_chronicles_11),
+            ImageModel(R.drawable.im_chronicles_12)
         )
 
         userImagesRecyclerView = findViewById(R.id.user_images_recycler)
