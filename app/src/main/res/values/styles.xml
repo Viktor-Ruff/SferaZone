@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+
+    <style name="stileButton">
+
+        <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+        <item name="cornerRadius">4dp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:background">@drawable/rectangle</item>
+
+    </style>
+
+
+    <style name="stileTextInputLayout" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="boxStrokeColor">@color/white</item>
+        <item name="strokeColor">@color/white</item>
+
+    </style>
+
+
+    <style name="MySwitch" parent="Theme.Design">
+        ...
+        <!-- Неактивное состояние -->
+        <item name="colorSwitchThumbNormal">#FF8F8F8F</item>
+
+        <!-- Активное состояние -->
+
+        <item name="colorControlActivated">@color/second_color</item>
+        ...
+    </style>
+
+
+    <style name="TextIDStyle">
+
+        <item name="android:lineSpacingExtra">2sp</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:letterSpacing">-0.01</item>
+        <item name="android:fontFamily">@font/inter_medium</item>
+
+    </style>
+
+
+    <style name="CornerImageStyle" parent="">
+
+        <item name="cornerSize">4dp</item>
+
+    </style>
+
+
+</resources>
