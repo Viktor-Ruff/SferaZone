@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
             ImageModel(R.drawable.im_moments_1),
             ImageModel(R.drawable.im_moments_2),
             ImageModel(R.drawable.im_moments_3),
-            ImageModel(R.drawable.im_moments_4),
-            ImageModel(R.drawable.im_moments_5),
-            ImageModel(R.drawable.im_moments_6),
+            ImageModel(R.drawable.im_moments_1),
+            ImageModel(R.drawable.im_moments_2),
+            ImageModel(R.drawable.im_moments_3),
         )
 
         val chroniclesList: List<ImageModel> = listOf(
