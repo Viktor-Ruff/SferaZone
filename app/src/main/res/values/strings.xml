@@ -2,7 +2,7 @@
     <string name="app_name">SferaZone1</string>
     <string name="share">share</string>
     <string name="user_id">ID 123 456 789</string>
-    <string name="profile_name">Viktor Ruff</string>
+    <string name="profile_name">Viktoria Ruff</string>
     <string name="profile_points">4.7</string>
     <string name="choose">Choose</string>
     <string name="languages">Russian, English, German</string>
@@ -15,4 +15,10 @@
     <string name="bt_wishes_text">WISHES</string>
     <string name="moments">Moments</string>
     <string name="chronicles">Chronicles</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="subscribe">Subscribe</string>
+    <string name="unSubscribe">UnSubscribe</string>
+    <string name="user">User</string>
+    <string name="search">search</string>
 </resources>

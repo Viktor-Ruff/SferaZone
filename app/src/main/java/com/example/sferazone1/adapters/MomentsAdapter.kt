@@ -3,43 +3,45 @@ package com.example.sferazone1.adapters
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.sferazone1.R
-import com.example.sferazone1.imageModel.ImageModel
+import com.example.sferazone1.databinding.ItemMomentsImageBinding
+import com.example.sferazone1.model.ImageModel
 
 /**
  * Created by Viktor-Ruff
  * Date: 27.10.2022
  * Time: 19:40
  */
-class MomentsAdapter(private val momentsList: List<ImageModel>) :
-    RecyclerView.Adapter<MomentsAdapter.MomentsViewHolder>() {
 
-    class MomentsViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+class MomentsAdapter(private val listImages: Array<ImageModel>) :
+    RecyclerView.Adapter<MomentsAdapter.MomentsHolder>() {
 
-        private val momentsImageView: ImageView = itemView.findViewById(R.id.iv_moments_image)
-
-        fun bind(imageModel: ImageModel) {
-
-            momentsImageView.setImageResource(imageModel.userImage)
-
+    class MomentsHolder(item: View) : RecyclerView.ViewHolder(item) {
+        private val binding = ItemMomentsImageBinding.bind(item)
+        fun bind(item: ImageModel) {
+            Glide
+                .with(itemView.context)
+                .load(item.userImage)
+                .into(binding.ivMomentsImage)
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MomentsViewHolder {
-        val itemView =
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MomentsHolder {
+        val view =
             LayoutInflater.from(parent.context).inflate(R.layout.item_moments_image, parent, false)
-        return MomentsViewHolder(itemView)
+        return MomentsHolder(view)
     }
 
-    override fun onBindViewHolder(holder: MomentsViewHolder, position: Int) {
-        val momentsList = momentsList[position]
-        holder.bind(momentsList)
+
+    override fun onBindViewHolder(holder: MomentsHolder, position: Int) {
+        holder.bind(listImages[position])
     }
+
 
     override fun getItemCount(): Int {
-        return momentsList.size
+        return listImages.size
     }
-
 }
