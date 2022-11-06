@@ -10,8 +10,8 @@ import com.github.javafaker.Faker
 class UserService {
 
 
-    fun initImagesUserLIst(): Array<ImageModel> {
-        return arrayOf(
+    fun initImagesUserLIst(): List<ImageModel> {
+        return listOf(
             ImageModel("https://images.unsplash.com/photo-1636705451731-ebd358d45605?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"),
             ImageModel("https://images.unsplash.com/photo-1636704593233-0b40bfa91010?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60"),
             ImageModel("https://images.unsplash.com/photo-1636572729926-9b27f634e787?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"),
@@ -20,8 +20,8 @@ class UserService {
     }
 
 
-    fun initMomentsList(): Array<ImageModel> {
-        return arrayOf(
+    fun initMomentsList(): List<ImageModel> {
+        return listOf(
             ImageModel("https://i.pinimg.com/736x/26/b2/26/26b226453ab2cd4607df270aa21791f3--kendall-jenner-nails-kendall-jenner-outfits.jpg"),
             ImageModel("https://i.pinimg.com/736x/0e/45/24/0e4524d23b5d22d1dd1df5305ee8cd61.jpg"),
             ImageModel("https://i.pinimg.com/736x/6c/fa/db/6cfadb67a66539cd1ad3bf9e2f04bf24.jpg"),
@@ -32,8 +32,8 @@ class UserService {
     }
 
 
-    fun initChroniclesList(): Array<ImageModel> {
-        return arrayOf(
+    fun initChroniclesList(): List<ImageModel> {
+        return listOf(
             ImageModel("https://avatars.mds.yandex.net/i?id=cd55adb5e2757ac2c7a91fc8032bd0c3-6960402-images-thumbs&n=13&exp=1"),
             ImageModel("https://avatars.mds.yandex.net/i?id=2beb9c3d7ddf845672bd5577e6e13aa7512e3f00-5094251-images-thumbs&n=13&exp=1"),
             ImageModel("https://i.pinimg.com/736x/28/80/69/288069223bb0d7b4aaa2c2f594efdb04.jpg"),

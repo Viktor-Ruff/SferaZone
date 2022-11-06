@@ -13,7 +13,7 @@ import com.example.sferazone1.model.PeopleModel
  * Date: 02.11.2022
  * Time: 18:15
  */
-class PeopleAdapter(private val listPeople: List<PeopleModel>) :
+class PeopleAdapter constructor(private val listPeople: List<PeopleModel>) :
     RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
 
 
@@ -38,17 +38,13 @@ class PeopleAdapter(private val listPeople: List<PeopleModel>) :
                 tvPeopleProfileSubscribe.text = "Subscribe"
             }
 
-            with(holder.binding) {
-                tvPeopleProfileName.text = people.name
-                Glide
-                    .with(ivPeopleProfileImage.context)
-                    .load(people.profileImage)
-                    .circleCrop()
-                    .into(ivPeopleProfileImage)
-            }
+            Glide
+                .with(ivPeopleProfileImage.context)
+                .load(people.profileImage)
+                .circleCrop()
+                .into(ivPeopleProfileImage)
 
             tvPeopleProfileSubscribe.setOnClickListener() {
-
                 people.status = !people.status
                 notifyDataSetChanged()
             }

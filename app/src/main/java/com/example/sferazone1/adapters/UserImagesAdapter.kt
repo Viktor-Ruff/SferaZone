@@ -14,7 +14,7 @@ import com.example.sferazone1.model.ImageModel
  * Date: 29.10.2022
  * Time: 20:38
  */
-class UserImagesAdapter(private val userImagesList: Array<ImageModel>) :
+class UserImagesAdapter constructor(private val userImagesList: List<ImageModel>) :
     RecyclerView.Adapter<UserImagesAdapter.UserImagesViewHolder>() {
 
     class UserImagesViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -36,8 +36,8 @@ class UserImagesAdapter(private val userImagesList: Array<ImageModel>) :
 
 
     override fun onBindViewHolder(holder: UserImagesViewHolder, position: Int) {
-        val userImagesList = userImagesList[position]
-        holder.bind(userImagesList)
+        val userImage = userImagesList[position]
+        holder.bind(userImage)
     }
 
 

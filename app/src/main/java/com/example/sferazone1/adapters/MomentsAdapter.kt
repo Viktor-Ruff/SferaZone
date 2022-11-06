@@ -15,7 +15,7 @@ import com.example.sferazone1.model.ImageModel
  * Time: 19:40
  */
 
-class MomentsAdapter(private val listImages: Array<ImageModel>) :
+class MomentsAdapter constructor(private val listImages: List<ImageModel>) :
     RecyclerView.Adapter<MomentsAdapter.MomentsHolder>() {
 
     class MomentsHolder(item: View) : RecyclerView.ViewHolder(item) {
