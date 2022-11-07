@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:orientation="vertical"
     tools:context=".PeopleScreenFragment">
 
+
     <com.google.android.material.appbar.MaterialToolbar
+        android:elevation="0dp"
         android:id="@+id/appBar_people"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
         android:layout_width="match_parent"
@@ -17,20 +20,40 @@
         app:titleTextAppearance="@style/TextIDStyle"
         app:titleTextColor="@color/main_color" />
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tabLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="48dp"
+        android:background="#17FFFFFF"
+        app:tabGravity="center"
+        app:tabIndicatorColor="@color/second_color"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/second_color"
+        app:tabTextColor="@color/main_color1">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/people_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="56dp"
-            android:orientation="vertical"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-            app:layout_constraintTop_toTopOf="parent"
-            tools:listitem="@layout/item_people_profiles_image" />
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/subscribers" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/subscriptions" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <com.google.android.material.tabs.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:text="@string/mutually" />
+
+
+    </com.google.android.material.tabs.TabLayout>
+
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+</LinearLayout>

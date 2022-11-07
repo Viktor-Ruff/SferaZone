@@ -21,4 +21,7 @@
     <string name="unSubscribe">UnSubscribe</string>
     <string name="user">User</string>
     <string name="search">search</string>
+    <string name="subscribers">SUBSCRIBERS</string>
+    <string name="subscriptions">SUBSCRIPTIONS</string>
+    <string name="mutually">MUTUALLY</string>
 </resources>

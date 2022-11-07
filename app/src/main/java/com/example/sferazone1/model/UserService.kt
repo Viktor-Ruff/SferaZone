@@ -9,6 +9,21 @@ import com.github.javafaker.Faker
  */
 class UserService {
 
+    fun initPeopleList(count:Int): List<PeopleModel> {
+        images.shuffle()
+        val peopleList: List<PeopleModel>
+        val faker: Faker = Faker.instance()
+        peopleList = (1..count).map {
+            PeopleModel(
+                id = it,
+                name = faker.name().name(),
+                profileImage = images[it % images.size],
+                status = false
+            )
+        }
+        return peopleList
+    }
+
 
     fun initImagesUserLIst(): List<ImageModel> {
         return listOf(
@@ -50,22 +65,7 @@ class UserService {
     }
 
 
-    fun initPeopleList(): List<PeopleModel> {
-        val peopleList: List<PeopleModel>
-        val faker: Faker = Faker.instance()
-        peopleList = (1..50).map {
-            PeopleModel(
-                id = it,
-                name = faker.name().name(),
-                profileImage = images[it % images.size],
-                status = false
-            )
-        }
-        return peopleList
-    }
-
-
-    private val images: List<String> = listOf(
+    private val images: MutableList<String> = mutableListOf(
         "https://yandex-images.clstorage.net/N9Uwo8357/dcf929m_9W/ifpP_DCmnG052w5m-q6WdBSwuLyBDs_PeJhzYDsXosEGsNnzlwxPn0iYIPF5F----GuWuNWEYrIokrUpZ4XoAsqoA7AruNNnONsNa_O1n3MfuLe0hRrIzSDPaDhnBauUGKHXpv1nP-ZuoQrBCGSWyLY-yeWEzS7mcsncW3Lbp2Kx8UnoI7PDaxT4VEfvqatUP8uaq4NM4r5mtSkjSyP6nSe5gNbodjz_dZEKxzF5sP-4GOX2seVG6FH0yXIH1bhTre1izi-n41oc7HVs3ZecWgnMsJehb8iifY4rHGAv-ZgTpKDg1GIu4lWYL_8OVb3hgTfz-Zfmatdwysd3K_2VcrbTT_wopMdmLOFXbe-rlnYb166SnmjLvUS2GiN4HcKhCZWE3dFeNdB2rgnRAmGp46Q51MyE5Gf_aujvTgrBk1iPy2vqEq3jdzDfS03JmpZ5BPODqqRF06hBrQ0ybRzjuyeWhtDGYgfyXY0I4TVQiO6sCPHRi9xEylLsxEY04apUscNa8iWT1Fkqw1lmy5WbXAnSvbKvZOq5d4w-IXg5_qAXhb_O6G0s4EeIF-ACR7vRrR3L9az7bfds5_phA_mibp7rbs80gdpUPO11XvWop0Yax7ixt2f_lUC_JTBMFuK3Jb2M09BJHchujTbkIHmSwb0T6cyr0GLsUsbvcTj6gG232UH0AabeaTjtRG_-p7h_JeSMsK113ptnqS8-RgPGnRWZjO_DSwfMXJoc5yZ0m8O7GtTrt_h0ylTi6WMr2IJWtNhDzjCww0cn8WJY_4OhWSD8jomdVMOcY5AqGmwN2bQUn6L0-F4P1lyQB90RRIbMhinG5YLCY8hnweppM9m6eazBffYLvNtiLslRVcuPolw_6LO0kVP-qEC2Nz1cHcG9FL-g-OZvC-tilSrEGGatxIMP3dm5wGX1Xs3VVRvukXiwzVPcJLP8QRnZZHTsprhcP82Pj7l3_KNjuTg3UB4",
         "https://avatars.mds.yandex.net/i?id=1af382048d30d57bc65d2a68551636c0-4470903-images-thumbs&n=13&exp=1",
         "https://avatars.mds.yandex.net/i?id=0c865367bdcc2ca206ff9bb49fe0a3078b1a7707-5221296-images-thumbs&n=13&exp=1",

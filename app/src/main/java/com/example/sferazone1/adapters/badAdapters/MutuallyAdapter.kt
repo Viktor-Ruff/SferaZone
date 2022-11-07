@@ -1,4 +1,4 @@
-package com.example.sferazone1.adapters
+package com.example.sferazone1.adapters.badAdapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -10,22 +10,21 @@ import com.example.sferazone1.model.PeopleModel
 
 /**
  * Created by Viktor-Ruff
- * Date: 02.11.2022
- * Time: 18:15
+ * Date: 06.11.2022
+ * Time: 15:35
  */
-class PeopleAdapter constructor(private val listPeople: List<PeopleModel>) :
-    RecyclerView.Adapter<PeopleAdapter.PeopleViewHolder>() {
+class MutuallyAdapter constructor(private val listPeople: List<PeopleModel>) :
+    RecyclerView.Adapter<MutuallyAdapter.MutuallyViewHolder>() {
 
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MutuallyViewHolder {
         val inflater = LayoutInflater.from(parent.context)
         val binding = ItemPeopleProfilesImageBinding.inflate(inflater, parent, false)
-        return PeopleViewHolder(binding)
+        return MutuallyViewHolder(binding)
     }
 
-
-    @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
-    override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
+    @SuppressLint("SetTextI18n", "NotifyDataSetChanged")
+    override fun onBindViewHolder(holder: MutuallyViewHolder, position: Int) {
         val people = listPeople[position]
 
         with(holder.binding) {
@@ -57,8 +56,7 @@ class PeopleAdapter constructor(private val listPeople: List<PeopleModel>) :
     }
 
 
-    class PeopleViewHolder(
+    class MutuallyViewHolder(
         val binding: ItemPeopleProfilesImageBinding
     ) : RecyclerView.ViewHolder(binding.root)
-
 }

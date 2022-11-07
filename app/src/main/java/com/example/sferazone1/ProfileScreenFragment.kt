@@ -9,9 +9,9 @@ import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.example.sferazone1.adapters.ChroniclesAdapter
-import com.example.sferazone1.adapters.MomentsAdapter
-import com.example.sferazone1.adapters.UserImagesAdapter
+import com.example.sferazone1.adapters.profileAdapters.ChroniclesAdapter
+import com.example.sferazone1.adapters.profileAdapters.MomentsAdapter
+import com.example.sferazone1.adapters.profileAdapters.UserImagesAdapter
 import com.example.sferazone1.databinding.FragmentProfileScreenBinding
 import com.example.sferazone1.model.UserService
 
@@ -19,9 +19,6 @@ import com.example.sferazone1.model.UserService
 class ProfileScreenFragment : Fragment() {
 
     private lateinit var binding: FragmentProfileScreenBinding
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
 
     override fun onCreateView(
