@@ -28,8 +28,33 @@ class PeopleAdapter :
     }
 
 
+    @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
-        holder.bind(getItem(position))
+        val people = getItem(position)
+        val context = holder.binding.root
+
+        with(holder.binding) {
+            tvPeopleProfileName.text = people.name
+            tvPeopleProfileSubscribe.isChecked = people.status
+
+            if (people.status) {
+                tvPeopleProfileSubscribe.text = context.resources.getText(R.string.unSubscribe)
+            } else {
+                tvPeopleProfileSubscribe.text = context.resources.getText(R.string.subscribe)
+            }
+
+            Glide
+                .with(ivPeopleProfileImage.context)
+                .load(people.profileImage)
+                .circleCrop()
+                .into(ivPeopleProfileImage)
+
+            tvPeopleProfileSubscribe.setOnClickListener() {
+                people.status = !people.status
+                notifyDataSetChanged()
+            }
+        }
+
     }
 
 
@@ -50,32 +75,6 @@ class PeopleAdapter :
 
 
     class PeopleViewHolder(
-        private val binding: ItemPeopleProfilesImageBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
-
-        private val context = itemView.context
-
-        fun bind(people: PeopleModel) = with(binding) {
-            tvPeopleProfileName.text = people.name
-            tvPeopleProfileSubscribe.isChecked = people.status
-
-            if (people.status) {
-                tvPeopleProfileSubscribe.text = context.resources.getText(R.string.subscribe)
-            } else {
-                tvPeopleProfileSubscribe.text = context.resources.getText(R.string.subscribe)
-            }
-
-            Glide
-                .with(ivPeopleProfileImage.context)
-                .load(people.profileImage)
-                .circleCrop()
-                .into(ivPeopleProfileImage)
-
-            tvPeopleProfileSubscribe.setOnClickListener() {
-                people.status = !people.status
-
-            }
-        }
-
-    }
+        val binding: ItemPeopleProfilesImageBinding
+    ) : RecyclerView.ViewHolder(binding.root)
 }
