@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.sferazone1.adapters.peopleAdapters.PeopleAdapter
 import com.example.sferazone1.adapters.peopleAdapters.SubscribersAdapter
 import com.example.sferazone1.databinding.FragmentListBinding
 import com.example.sferazone1.model.PeopleModel
@@ -40,8 +42,9 @@ class ListFragment : Fragment() {
         val userService = UserService()
 
 
-        val subscribersAdapter = SubscribersAdapter(userService.initPeopleList(param1))
-        binding.peopleRecycler.adapter = subscribersAdapter
+        val peopleAdapter = PeopleAdapter()
+        peopleAdapter.submitList(userService.initPeopleList(param1))
+        binding.peopleRecycler.adapter = peopleAdapter
 
     }
 
