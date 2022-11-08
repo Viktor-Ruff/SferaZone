@@ -3,22 +3,34 @@ package com.example.sferazone1.adapters.peopleAdapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.FilterQueryProvider
+import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sferazone1.R
-
 import com.example.sferazone1.databinding.ItemPeopleProfilesImageBinding
 import com.example.sferazone1.model.PeopleModel
+
 
 /**
  * Created by Viktor-Ruff
  * Date: 06.11.2022
  * Time: 18:18
  */
-class PeopleAdapter :
-    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()) {
+class PeopleAdapter (/*clickListener: ClickListener*/):
+    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()), Filterable {
+
+    private var peopleList: List<PeopleModel> = listOf()
+   /* private var clickListener:ClickListener = clickListener*/
+
+    @SuppressLint("NotifyDataSetChanged")
+    public fun setData(people: List<PeopleModel>) {
+        this.peopleList = people
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PeopleViewHolder {
@@ -30,10 +42,16 @@ class PeopleAdapter :
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
-        val people = getItem(position)
         val context = holder.binding.root
+         val people = getItem(position)
+        /*val people = peopleList[position]*/
+         /*holder.itemView.setOnClickListener(){
+             clickListener
+         }*/
+
 
         with(holder.binding) {
+
             tvPeopleProfileName.text = people.name
             tvPeopleProfileSubscribe.isChecked = people.status
 
@@ -57,6 +75,10 @@ class PeopleAdapter :
 
     }
 
+    interface ClickListener {
+        fun clickedItem()
+    }
+
 
     class ItemComparator : DiffUtil.ItemCallback<PeopleModel>() {
 
@@ -77,4 +99,11 @@ class PeopleAdapter :
     class PeopleViewHolder(
         val binding: ItemPeopleProfilesImageBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
+
+    override fun getFilter(): Filter {
+        TODO("Not yet implemented")
+    }
+
+
 }

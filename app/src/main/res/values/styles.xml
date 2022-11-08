@@ -39,4 +39,9 @@
         <item name="cornerSize">4dp</item>
     </style>
 
+    <style name="TabStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/inter_medium</item>
+    </style>
+
 </resources>

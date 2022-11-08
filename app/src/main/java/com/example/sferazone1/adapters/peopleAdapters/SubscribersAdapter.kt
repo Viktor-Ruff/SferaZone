@@ -3,6 +3,8 @@ package com.example.sferazone1.adapters.peopleAdapters
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sferazone1.databinding.ItemPeopleProfilesImageBinding
@@ -10,11 +12,22 @@ import com.example.sferazone1.model.PeopleModel
 
 /**
  * Created by Viktor-Ruff
- * Date: 02.11.2022
- * Time: 18:15
+ * Date: 08.11.2022
+ * Time: 11:50
  */
-class SubscribersAdapter constructor(private val listPeople: List<PeopleModel>) :
-    RecyclerView.Adapter<SubscribersAdapter.SubscribersViewHolder>() {
+class SubscribersAdapter(clickListener: ClickListener) :
+    RecyclerView.Adapter<SubscribersAdapter.SubscribersViewHolder>(), Filterable {
+
+    private var peopleList: List<PeopleModel> = arrayListOf()
+    private var peopleListFiltered: List<PeopleModel> = arrayListOf()
+    private var clickListener: ClickListener = clickListener
+
+    @SuppressLint("NotifyDataSetChanged")
+    fun setData(people: List<PeopleModel>) {
+        this.peopleList = people
+        this.peopleListFiltered = ArrayList(peopleList)
+        notifyDataSetChanged()
+    }
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubscribersViewHolder {
@@ -26,7 +39,12 @@ class SubscribersAdapter constructor(private val listPeople: List<PeopleModel>) 
 
     @SuppressLint("NotifyDataSetChanged", "SetTextI18n")
     override fun onBindViewHolder(holder: SubscribersViewHolder, position: Int) {
-        val people = listPeople[position]
+
+        val people = peopleList[position]
+        /*val people = listPeople[position]*/
+        holder.itemView.setOnClickListener() {
+            clickListener.clickedItem(people)
+        }
 
         with(holder.binding) {
             tvPeopleProfileName.text = people.name
@@ -51,14 +69,59 @@ class SubscribersAdapter constructor(private val listPeople: List<PeopleModel>) 
         }
     }
 
+    interface ClickListener {
+        fun clickedItem(people: PeopleModel)
+    }
+
 
     override fun getItemCount(): Int {
-        return listPeople.size
+        return peopleList.size
     }
 
 
     class SubscribersViewHolder(
         val binding: ItemPeopleProfilesImageBinding
     ) : RecyclerView.ViewHolder(binding.root)
+
+
+    override fun getFilter(): Filter {
+        val filter = object : Filter() {
+
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+
+                var filterResults = FilterResults()
+                var filteredArrayList = ArrayList<PeopleModel>()
+
+                if (p0 == null || p0.isEmpty()) {
+                    filteredArrayList.addAll(peopleListFiltered)
+                    /*filterResults.values = peopleListFiltered
+                    filterResults.count = peopleListFiltered.size*/
+                } else {
+                    var searchChar = p0.toString().toLowerCase()
+
+                    for (people in peopleListFiltered) {
+                        if (people.name.toLowerCase().contains(searchChar)) {
+                            filteredArrayList.add(people)
+                        }
+                    }
+
+                    filterResults.values = peopleListFiltered
+                    filterResults.count = peopleListFiltered.size
+                }
+
+                return filterResults
+            }
+
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+
+
+                peopleList = p1!!.values as List<PeopleModel>
+                notifyDataSetChanged()
+            }
+        }
+        return filter
+    }
 
 }

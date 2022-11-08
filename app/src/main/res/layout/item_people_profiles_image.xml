@@ -21,6 +21,8 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
+        android:lines="1"
+        android:ellipsize="end"
         android:id="@+id/tv_people_profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

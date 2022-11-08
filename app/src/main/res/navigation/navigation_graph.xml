@@ -18,5 +18,14 @@
         android:id="@+id/peopleScreenFragment"
         android:name="com.example.sferazone1.PeopleScreenFragment"
         android:label="People"
-        tools:layout="@layout/fragment_people_screen" />
+        tools:layout="@layout/fragment_people_screen" >
+        <action
+            android:id="@+id/action_peopleScreenFragment_to_selectedUserScreenFragment"
+            app:destination="@id/selectedUserScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/selectedUserScreenFragment"
+        android:name="com.example.sferazone1.SelectedUserScreenFragment"
+        android:label="fragment_selected_user_screen"
+        tools:layout="@layout/fragment_selected_user_screen" />
 </navigation>
