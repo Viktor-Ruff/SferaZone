@@ -49,13 +49,15 @@ class ListFragment : Fragment(), PeopleAdapter.ClickListener, SubscribersAdapter
         val userService = UserService()
 
 
-        /* val peopleAdapter = PeopleAdapter()
-         peopleAdapter.submitList(userService.initPeopleList(param1))
-         binding.peopleRecycler.adapter = peopleAdapter*/
+         val peopleAdapter = PeopleAdapter(this)
+        peopleAdapter.submitList(userService.initPeopleList(param1).toMutableList())
+         binding.peopleRecycler.adapter = peopleAdapter
 
-        subscribersAdapter = SubscribersAdapter(this)
+
+
+        /*subscribersAdapter = SubscribersAdapter(this)
         subscribersAdapter.setData(userService.initPeopleList(param1))
-        binding.peopleRecycler.adapter = subscribersAdapter
+        binding.peopleRecycler.adapter = subscribersAdapter*/
 
     }
 
@@ -72,11 +74,7 @@ class ListFragment : Fragment(), PeopleAdapter.ClickListener, SubscribersAdapter
             }
     }
 
-    override fun clickedItem() {
-        findNavController().navigate(R.id.action_peopleScreenFragment_to_selectedUserScreenFragment)
 
-
-    }
 
     override fun clickedItem(people: PeopleModel) {
         findNavController().navigate(R.id.action_peopleScreenFragment_to_selectedUserScreenFragment)

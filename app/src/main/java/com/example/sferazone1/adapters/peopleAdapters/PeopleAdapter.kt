@@ -20,16 +20,20 @@ import com.example.sferazone1.model.PeopleModel
  * Date: 06.11.2022
  * Time: 18:18
  */
-class PeopleAdapter (/*clickListener: ClickListener*/):
+class PeopleAdapter(private var clickListener: ClickListener) :
     ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()), Filterable {
 
-    private var peopleList: List<PeopleModel> = listOf()
-   /* private var clickListener:ClickListener = clickListener*/
 
-    @SuppressLint("NotifyDataSetChanged")
-    public fun setData(people: List<PeopleModel>) {
-        this.peopleList = people
-        notifyDataSetChanged()
+    private var peopleList: List<PeopleModel> = arrayListOf()
+    private var peopleListFiltered: List<PeopleModel> = arrayListOf()
+
+    override fun submitList(list: MutableList<PeopleModel>?) {
+        if (list != null) {
+            this.peopleList = list
+            this.peopleListFiltered = peopleList
+        }
+
+        super.submitList(list)
     }
 
 
@@ -42,12 +46,14 @@ class PeopleAdapter (/*clickListener: ClickListener*/):
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
+        /*
+         val people = getItem(position)*/
         val context = holder.binding.root
-         val people = getItem(position)
-        /*val people = peopleList[position]*/
-         /*holder.itemView.setOnClickListener(){
-             clickListener
-         }*/
+        val people = peopleList[position]
+
+        holder.itemView.setOnClickListener() {
+            clickListener.clickedItem(people)
+        }
 
 
         with(holder.binding) {
@@ -76,7 +82,48 @@ class PeopleAdapter (/*clickListener: ClickListener*/):
     }
 
     interface ClickListener {
-        fun clickedItem()
+        fun clickedItem(people: PeopleModel)
+    }
+
+
+    override fun getFilter(): Filter {
+        val filter = object : Filter() {
+
+            override fun performFiltering(p0: CharSequence?): FilterResults {
+
+                var filterResults = FilterResults()
+                var filteredArrayList = ArrayList<PeopleModel>()
+
+                if (p0 == null || p0.isEmpty()) {
+                    /*filteredArrayList.addAll(peopleListFiltered)*/
+                    filterResults.values = peopleListFiltered
+                    filterResults.count = peopleListFiltered.size
+                } else {
+                    var searchChar = p0.toString().toLowerCase()
+
+                    for (people in peopleListFiltered) {
+                        if (people.name.toLowerCase().contains(searchChar)) {
+                            filteredArrayList.add(people)
+                        }
+                    }
+
+                    filterResults.values = peopleListFiltered
+                    filterResults.count = peopleListFiltered.size
+                }
+
+                return filterResults
+            }
+
+
+            @SuppressLint("NotifyDataSetChanged")
+            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
+
+
+                peopleList = p1!!.values as List<PeopleModel>
+                notifyDataSetChanged()
+            }
+        }
+        return filter
     }
 
 
@@ -99,11 +146,6 @@ class PeopleAdapter (/*clickListener: ClickListener*/):
     class PeopleViewHolder(
         val binding: ItemPeopleProfilesImageBinding
     ) : RecyclerView.ViewHolder(binding.root)
-
-
-    override fun getFilter(): Filter {
-        TODO("Not yet implemented")
-    }
 
 
 }

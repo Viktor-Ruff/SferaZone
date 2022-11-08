@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context=".PeopleScreenFragment">
 
-
-
     <com.google.android.material.appbar.MaterialToolbar
         android:id="@+id/appBar_people"
         style="@style/Widget.MaterialComponents.Toolbar.Primary"
@@ -22,8 +20,8 @@
         app:titleTextColor="@color/main_color" />
 
     <com.google.android.material.tabs.TabLayout
-        style="@style/Widget.Design.TabLayout"
         android:id="@+id/tabLayout"
+        style="@style/Widget.Design.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#17FFFFFF"

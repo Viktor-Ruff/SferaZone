@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.sferazone1.databinding.ItemPeopleProfilesImageBinding
@@ -25,7 +26,7 @@ class SubscribersAdapter(clickListener: ClickListener) :
     @SuppressLint("NotifyDataSetChanged")
     fun setData(people: List<PeopleModel>) {
         this.peopleList = people
-        this.peopleListFiltered = ArrayList(peopleList)
+        this.peopleListFiltered = people
         notifyDataSetChanged()
     }
 
@@ -122,6 +123,21 @@ class SubscribersAdapter(clickListener: ClickListener) :
             }
         }
         return filter
+    }
+
+    class ItemComparator : DiffUtil.ItemCallback<PeopleModel>() {
+
+        override fun areItemsTheSame(oldItem: PeopleModel, newItem: PeopleModel): Boolean {
+            return oldItem.id == newItem.id
+        }
+
+        override fun areContentsTheSame(oldItem: PeopleModel, newItem: PeopleModel): Boolean {
+            return oldItem.hashCode() == newItem.hashCode()
+        }
+
+        override fun getChangePayload(oldItem: PeopleModel, newItem: PeopleModel): Any? {
+            return oldItem.status != newItem.status
+        }
     }
 
 }
