@@ -25,13 +25,19 @@ private const val TWO: Int = 2
 class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
     SearchView.OnQueryTextListener {
 
-    private var peopleListFiltered: List<PeopleModel> = arrayListOf()
-    private lateinit var peopleList: List<PeopleModel>
+    private lateinit var subscribersList: List<PeopleModel>
+    private lateinit var subscriptionList: List<PeopleModel>
+    private lateinit var mutuallyList: List<PeopleModel>
     private lateinit var navController: NavController
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var binding: FragmentPeopleScreenBinding
     private lateinit var listFragments: List<Fragment>
-    private lateinit var peopleAdapter: PeopleAdapter
+    private lateinit var subscribersAdapter: PeopleAdapter
+    private lateinit var subscriptionAdapter: PeopleAdapter
+    private lateinit var mutuallyAdapter: PeopleAdapter
+    private lateinit var subscribersFilter: ListFilter
+    private lateinit var subscriptionFilter: ListFilter
+    private lateinit var mutuallyFilter: ListFilter
 
 
     override fun onCreateView(
@@ -46,24 +52,52 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
         super.onViewCreated(view, savedInstanceState)
 
         binding = FragmentPeopleScreenBinding.bind(view)
-        peopleAdapter = PeopleAdapter(this)
 
-        initLists()
+        initAdapters()
+        initList()
+        initFilter()
+        initFragments()
         initNavigation()
         initViewPager2()
         initSearch()
     }
 
+    private fun initAdapters() {
+        subscribersAdapter = PeopleAdapter(this)
+        subscriptionAdapter = PeopleAdapter(this)
+        mutuallyAdapter = PeopleAdapter(this)
+    }
 
-    private fun initLists() {
+
+    private fun initList() {
         val userService = UserService()
-        peopleList = userService.initPeopleList(40)
-        peopleListFiltered = peopleList
+        subscribersList = userService.initPeopleList(40)
+        subscriptionList = userService.initPeopleList(10)
+        mutuallyList = userService.initPeopleList(5)
+    }
+
+
+    private fun initFilter() {
+        subscribersFilter = ListFilter(subscribersAdapter, subscribersList)
+        subscriptionFilter = ListFilter(subscriptionAdapter, subscriptionList)
+        mutuallyFilter = ListFilter(mutuallyAdapter, mutuallyList)
+    }
+
+
+    private fun initFragments() {
+
         listFragments = listOf(
-            ListFragment(peopleAdapter, peopleList),
-            ListFragment(peopleAdapter, peopleList),
-            ListFragment(peopleAdapter, peopleList)
+            ListFragment(subscribersAdapter, subscribersList),
+            ListFragment(subscriptionAdapter, subscriptionList),
+            ListFragment(mutuallyAdapter, mutuallyList)
         )
+    }
+
+
+    private fun initNavigation() {
+        navController = findNavController()
+        appBarConfiguration = AppBarConfiguration(navController.graph)
+        binding.toolbarPeople.setupWithNavController(navController, appBarConfiguration)
     }
 
 
@@ -83,27 +117,6 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
     }
 
 
-    private fun initNavigation() {
-        navController = findNavController()
-        appBarConfiguration = AppBarConfiguration(navController.graph)
-        binding.toolbarPeople.setupWithNavController(navController, appBarConfiguration)
-    }
-
-
-    private fun filterList(text: String) {
-
-        var filteredArrayList = ArrayList<PeopleModel>()
-        for (people in peopleList) {
-            if (people.name.toLowerCase().contains(text.toLowerCase())) {
-                filteredArrayList.add(people)
-            } else {
-                filteredArrayList.remove(people)
-            }
-        }
-        peopleAdapter.setFilteredList(filteredArrayList)
-    }
-
-
     private fun initSearch() {
         binding.toolbarPeople.setOnMenuItemClickListener {
             when (it.itemId) {
@@ -112,8 +125,6 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
                     searchView.queryHint = context?.getString(R.string.search)
                     searchView.setIconifiedByDefault(false)
                     searchView.clearFocus()
-
-
                     val ll = searchView.getChildAt(0) as LinearLayout
                     val ll2 = ll.getChildAt(2) as LinearLayout
                     val ll3 = ll2.getChildAt(1) as LinearLayout
@@ -140,7 +151,7 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
 
 
     override fun clickedItem(people: PeopleModel) {
-        findNavController().navigate(R.id.action_peopleScreenFragment_to_selectedUserScreenFragment)
+        /* findNavController().navigate(R.id.action_peopleScreenFragment_to_selectedUserScreenFragment)*/
     }
 
 
@@ -150,7 +161,9 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
-            filterList(newText)
+            subscribersFilter.filterList(newText)
+            subscriptionFilter.filterList(newText)
+            mutuallyFilter.filterList(newText)
         }
 
         return true
