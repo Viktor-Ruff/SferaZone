@@ -6,16 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".ListFragment">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_view"
-        android:layout_width="match_parent"
-        android:layout_height="?actionBarSize"
-        android:background="@drawable/rectangle"
-        app:iconifiedByDefault="false"
-        app:queryHint="Search..." />
-
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_marginTop="56dp"
         android:id="@+id/people_recycler"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

@@ -18,7 +18,7 @@ class UserService {
                 id = it,
                 name = faker.name().name(),
                 profileImage = images[it % images.size],
-                status = false
+                status = true
             )
         }
         return peopleList
