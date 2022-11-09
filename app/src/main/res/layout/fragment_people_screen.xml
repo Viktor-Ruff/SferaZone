@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    tools:context=".PeopleScreenFragment">
+    tools:context=".view.screens.PeopleScreenFragment">
 
 
     <com.google.android.material.appbar.MaterialToolbar
@@ -22,7 +22,6 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tabLayout"
-        style="@style/Widget.Design.TabLayout"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="#17FFFFFF"

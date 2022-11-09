@@ -1,5 +1,7 @@
-package com.example.sferazone1.model
+package com.example.sferazone1.viewModel
 
+import com.example.sferazone1.model.ImageModel
+import com.example.sferazone1.model.PeopleModel
 import com.github.javafaker.Faker
 
 /**

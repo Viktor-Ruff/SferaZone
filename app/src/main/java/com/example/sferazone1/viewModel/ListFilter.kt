@@ -1,7 +1,6 @@
-package com.example.sferazone1
+package com.example.sferazone1.viewModel
 
-import android.widget.ListAdapter
-import com.example.sferazone1.adapters.peopleAdapters.PeopleAdapter
+import com.example.sferazone1.view.peopleAdapters.PeopleAdapter
 import com.example.sferazone1.model.PeopleModel
 
 /**

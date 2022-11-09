@@ -1,10 +1,11 @@
-package com.example.sferazone1
+package com.example.sferazone1.view.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.example.sferazone1.R
 import com.example.sferazone1.databinding.FragmentSelectedUserScreenBinding
 
 
@@ -31,7 +32,6 @@ class SelectedUserScreenFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-
         return inflater.inflate(R.layout.fragment_selected_user_screen, container, false)
     }
 
@@ -41,7 +41,6 @@ class SelectedUserScreenFragment : Fragment() {
 
         binding = FragmentSelectedUserScreenBinding.bind(view)
         getData()
-
     }
 
 
@@ -51,12 +50,10 @@ class SelectedUserScreenFragment : Fragment() {
 
 
     private fun getData() {
-
     }
 
 
     companion object {
-
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
             SelectedUserScreenFragment().apply {

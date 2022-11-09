@@ -1,4 +1,4 @@
-package com.example.sferazone1
+package com.example.sferazone1.view.screens
 
 import android.os.Bundle
 import android.view.*
@@ -8,15 +8,17 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
-import com.example.sferazone1.adapters.peopleAdapters.PeoplePagerAdapter
+import com.example.sferazone1.view.peopleAdapters.PeoplePagerAdapter
 import com.example.sferazone1.databinding.FragmentPeopleScreenBinding
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
-import com.example.sferazone1.adapters.peopleAdapters.PeopleAdapter
+import com.example.sferazone1.viewModel.ListFilter
+import com.example.sferazone1.R
+import com.example.sferazone1.view.peopleAdapters.PeopleAdapter
 import com.example.sferazone1.model.PeopleModel
-import com.example.sferazone1.model.UserService
+import com.example.sferazone1.viewModel.UserService
 
 private const val ZERO: Int = 0
 private const val ONE: Int = 1

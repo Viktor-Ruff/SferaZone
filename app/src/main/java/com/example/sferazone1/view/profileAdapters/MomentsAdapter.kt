@@ -1,4 +1,4 @@
-package com.example.sferazone1.adapters.profileAdapters
+package com.example.sferazone1.view.profileAdapters
 
 import android.view.LayoutInflater
 import android.view.View

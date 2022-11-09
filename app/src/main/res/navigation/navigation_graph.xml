@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/profileScreenFragment"
-        android:name="com.example.sferazone1.ProfileScreenFragment"
+        android:name="com.example.sferazone1.view.screens.ProfileScreenFragment"
         android:label="fragment_profile_screen"
         tools:layout="@layout/fragment_profile_screen" >
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
         android:id="@+id/peopleScreenFragment"
-        android:name="com.example.sferazone1.PeopleScreenFragment"
+        android:name="com.example.sferazone1.view.screens.PeopleScreenFragment"
         android:label="People"
         tools:layout="@layout/fragment_people_screen" >
         <action
@@ -25,7 +25,7 @@
     </fragment>
     <fragment
         android:id="@+id/selectedUserScreenFragment"
-        android:name="com.example.sferazone1.SelectedUserScreenFragment"
+        android:name="com.example.sferazone1.view.screens.SelectedUserScreenFragment"
         android:label="fragment_selected_user_screen"
         tools:layout="@layout/fragment_selected_user_screen" />
 </navigation>

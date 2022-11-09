@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SferaZone1">
         <activity
-            android:name=".MainActivity"
+            android:name=".view.screens.MainActivity"
             android:exported="true"
             android:screenOrientation="portrait">
             <intent-filter>

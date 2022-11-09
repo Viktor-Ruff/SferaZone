@@ -1,11 +1,8 @@
-package com.example.sferazone1.adapters.peopleAdapters
+package com.example.sferazone1.view.peopleAdapters
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.Filter
-import android.widget.FilterQueryProvider
-import android.widget.Filterable
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -21,16 +18,14 @@ import com.example.sferazone1.model.PeopleModel
  * Time: 18:18
  */
 class PeopleAdapter(private var clickListener: ClickListener) :
-    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator())/*, Filterable*/ {
+    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()) {
 
 
     private var peopleList = ArrayList<PeopleModel>()
-    /*private var peopleListFiltered: List<PeopleModel> = arrayListOf()*/
 
     override fun submitList(list: MutableList<PeopleModel>?) {
         if (list != null) {
             this.peopleList = list as ArrayList<PeopleModel>
-            /* this.peopleListFiltered = peopleList*/
         }
         super.submitList(list)
     }
@@ -83,7 +78,6 @@ class PeopleAdapter(private var clickListener: ClickListener) :
                 notifyDataSetChanged()
             }
         }
-
     }
 
     interface ClickListener {
@@ -91,56 +85,16 @@ class PeopleAdapter(private var clickListener: ClickListener) :
     }
 
 
-    /*override fun getFilter(): Filter {
-        val filter = object : Filter() {
-
-            override fun performFiltering(p0: CharSequence?): FilterResults {
-
-                var filterResults = FilterResults()
-                var filteredArrayList = ArrayList<PeopleModel>()
-
-                if (p0 == null || p0.isEmpty()) {
-                    *//*filteredArrayList.addAll(peopleListFiltered)*//*
-                    filterResults.values = peopleListFiltered
-                    filterResults.count = peopleListFiltered.size
-                } else {
-                    var searchChar = p0.toString().toLowerCase()
-
-                    for (people in peopleListFiltered) {
-                        if (people.name.toLowerCase().contains(searchChar)) {
-                            filteredArrayList.add(people)
-                        }
-                    }
-
-                    filterResults.values = peopleListFiltered
-                    filterResults.count = peopleListFiltered.size
-                }
-
-                return filterResults
-            }
-
-
-            @SuppressLint("NotifyDataSetChanged")
-            override fun publishResults(p0: CharSequence?, p1: FilterResults?) {
-
-
-                peopleList = p1!!.values as List<PeopleModel>
-                notifyDataSetChanged()
-            }
-        }
-        return filter
-    }*/
-
-
     class ItemComparator : DiffUtil.ItemCallback<PeopleModel>() {
-
         override fun areItemsTheSame(oldItem: PeopleModel, newItem: PeopleModel): Boolean {
             return oldItem.id == newItem.id
         }
 
+
         override fun areContentsTheSame(oldItem: PeopleModel, newItem: PeopleModel): Boolean {
             return oldItem.hashCode() == newItem.hashCode()
         }
+
 
         override fun getChangePayload(oldItem: PeopleModel, newItem: PeopleModel): Any? {
             return oldItem.status != newItem.status
@@ -151,6 +105,5 @@ class PeopleAdapter(private var clickListener: ClickListener) :
     class PeopleViewHolder(
         val binding: ItemPeopleProfilesImageBinding
     ) : RecyclerView.ViewHolder(binding.root)
-
 
 }

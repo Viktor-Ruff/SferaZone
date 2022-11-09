@@ -9,5 +9,5 @@
     android:background="@color/background"
     app:defaultNavHost="true"
     app:navGraph="@navigation/navigation_graph"
-    tools:context=".MainActivity" />
+    tools:context=".view.screens.MainActivity" />
 

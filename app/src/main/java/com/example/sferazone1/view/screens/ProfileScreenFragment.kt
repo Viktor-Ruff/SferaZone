@@ -1,4 +1,4 @@
-package com.example.sferazone1
+package com.example.sferazone1.view.screens
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -9,11 +9,12 @@ import androidx.appcompat.content.res.AppCompatResources.getColorStateList
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.bumptech.glide.Glide
-import com.example.sferazone1.adapters.profileAdapters.ChroniclesAdapter
-import com.example.sferazone1.adapters.profileAdapters.MomentsAdapter
-import com.example.sferazone1.adapters.profileAdapters.UserImagesAdapter
+import com.example.sferazone1.R
+import com.example.sferazone1.view.profileAdapters.ChroniclesAdapter
+import com.example.sferazone1.view.profileAdapters.MomentsAdapter
+import com.example.sferazone1.view.profileAdapters.UserImagesAdapter
 import com.example.sferazone1.databinding.FragmentProfileScreenBinding
-import com.example.sferazone1.model.UserService
+import com.example.sferazone1.viewModel.UserService
 
 
 class ProfileScreenFragment : Fragment() {

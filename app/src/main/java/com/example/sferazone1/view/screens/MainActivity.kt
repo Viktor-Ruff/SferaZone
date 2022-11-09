@@ -1,7 +1,8 @@
-package com.example.sferazone1
+package com.example.sferazone1.view.screens
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.example.sferazone1.R
 
 
 class MainActivity : AppCompatActivity() {

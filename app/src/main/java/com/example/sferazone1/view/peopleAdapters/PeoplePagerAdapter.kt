@@ -1,4 +1,4 @@
-package com.example.sferazone1.adapters.peopleAdapters
+package com.example.sferazone1.view.peopleAdapters
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity

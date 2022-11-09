@@ -1,4 +1,4 @@
-package com.example.sferazone1.placeholder
+package com.example.sferazone1.viewModel.placeholder
 
 import java.util.ArrayList
 import java.util.HashMap
