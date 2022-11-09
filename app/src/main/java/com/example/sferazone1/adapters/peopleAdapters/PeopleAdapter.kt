@@ -21,19 +21,25 @@ import com.example.sferazone1.model.PeopleModel
  * Time: 18:18
  */
 class PeopleAdapter(private var clickListener: ClickListener) :
-    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()), Filterable {
+    ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator())/*, Filterable*/ {
 
 
-    private var peopleList: List<PeopleModel> = arrayListOf()
-    private var peopleListFiltered: List<PeopleModel> = arrayListOf()
+    private var peopleList = ArrayList<PeopleModel>()
+    /*private var peopleListFiltered: List<PeopleModel> = arrayListOf()*/
 
     override fun submitList(list: MutableList<PeopleModel>?) {
         if (list != null) {
-            this.peopleList = list
-            this.peopleListFiltered = peopleList
+            this.peopleList = list as ArrayList<PeopleModel>
+            /* this.peopleListFiltered = peopleList*/
         }
-
         super.submitList(list)
+    }
+
+    fun setFilteredList(filteredList: List<PeopleModel>) {
+        this.peopleList.clear()
+        this.peopleList.addAll(filteredList)
+
+        notifyDataSetChanged()
     }
 
 
@@ -46,8 +52,7 @@ class PeopleAdapter(private var clickListener: ClickListener) :
 
     @SuppressLint("NotifyDataSetChanged")
     override fun onBindViewHolder(holder: PeopleViewHolder, position: Int) {
-        /*
-         val people = getItem(position)*/
+
         val context = holder.binding.root
         val people = peopleList[position]
 
@@ -86,7 +91,7 @@ class PeopleAdapter(private var clickListener: ClickListener) :
     }
 
 
-    override fun getFilter(): Filter {
+    /*override fun getFilter(): Filter {
         val filter = object : Filter() {
 
             override fun performFiltering(p0: CharSequence?): FilterResults {
@@ -95,7 +100,7 @@ class PeopleAdapter(private var clickListener: ClickListener) :
                 var filteredArrayList = ArrayList<PeopleModel>()
 
                 if (p0 == null || p0.isEmpty()) {
-                    /*filteredArrayList.addAll(peopleListFiltered)*/
+                    *//*filteredArrayList.addAll(peopleListFiltered)*//*
                     filterResults.values = peopleListFiltered
                     filterResults.count = peopleListFiltered.size
                 } else {
@@ -124,7 +129,7 @@ class PeopleAdapter(private var clickListener: ClickListener) :
             }
         }
         return filter
-    }
+    }*/
 
 
     class ItemComparator : DiffUtil.ItemCallback<PeopleModel>() {
