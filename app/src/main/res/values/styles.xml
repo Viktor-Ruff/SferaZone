@@ -42,6 +42,8 @@
     <style name="TabStyle">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/inter_medium</item>
+        <item name="android:lines">1</item>
+        <item name="maxLines">1</item>
     </style>
 
 </resources>

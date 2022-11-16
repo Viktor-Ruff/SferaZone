@@ -37,4 +37,5 @@ class ListFragment(peopleAdapter: PeopleAdapter, peopleList: List<PeopleModel>) 
         peopleAdapter.submitList(peopleList.toMutableList())
         binding.peopleRecycler.adapter = peopleAdapter
     }
+
 }

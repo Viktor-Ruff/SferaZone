@@ -21,6 +21,7 @@
         app:titleTextColor="@color/main_color" />
 
     <com.google.android.material.tabs.TabLayout
+        app:tabTextAppearance="@style/TabStyle"
         android:id="@+id/tabLayout"
         android:layout_width="match_parent"
         android:layout_height="48dp"

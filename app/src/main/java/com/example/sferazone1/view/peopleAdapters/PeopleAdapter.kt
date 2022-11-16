@@ -17,9 +17,9 @@ import com.example.sferazone1.model.PeopleModel
  * Date: 06.11.2022
  * Time: 18:18
  */
+
 class PeopleAdapter(private var clickListener: ClickListener) :
     ListAdapter<PeopleModel, PeopleAdapter.PeopleViewHolder>(ItemComparator()) {
-
 
     private var peopleList = ArrayList<PeopleModel>()
 
@@ -55,13 +55,26 @@ class PeopleAdapter(private var clickListener: ClickListener) :
             clickListener.clickedItem(people)
         }
 
-
         with(holder.binding) {
 
             tvPeopleProfileName.text = people.name
-            tvPeopleProfileSubscribe.isChecked = people.status
+            tvPeopleProfileSubscribe.isChecked = people.subscription
 
-            if (people.status) {
+            tvPeopleProfileSubscribe.setOnClickListener {
+                onItemClickListener?.let { click ->
+                    click(
+                        PeopleModel(
+                            id = people.id,
+                            profileImage = people.profileImage,
+                            name = people.name,
+                            subscription = !people.subscription,
+                            subscriber = people.subscriber
+                        )
+                    )
+                }
+            }
+
+            if (people.subscription) {
                 tvPeopleProfileSubscribe.text = context.resources.getText(R.string.unSubscribe)
             } else {
                 tvPeopleProfileSubscribe.text = context.resources.getText(R.string.subscribe)
@@ -72,13 +85,16 @@ class PeopleAdapter(private var clickListener: ClickListener) :
                 .load(people.profileImage)
                 .circleCrop()
                 .into(ivPeopleProfileImage)
-
-            tvPeopleProfileSubscribe.setOnClickListener() {
-                people.status = !people.status
-                notifyDataSetChanged()
-            }
         }
     }
+
+
+    private var onItemClickListener: ((PeopleModel) -> Unit)? = null
+
+    fun setOnItemClickListener(user: (PeopleModel) -> Unit) {
+        onItemClickListener = user
+    }
+
 
     interface ClickListener {
         fun clickedItem(people: PeopleModel)
@@ -92,12 +108,12 @@ class PeopleAdapter(private var clickListener: ClickListener) :
 
 
         override fun areContentsTheSame(oldItem: PeopleModel, newItem: PeopleModel): Boolean {
-            return oldItem.hashCode() == newItem.hashCode()
+            return oldItem == newItem
         }
 
 
-        override fun getChangePayload(oldItem: PeopleModel, newItem: PeopleModel): Any? {
-            return oldItem.status != newItem.status
+        override fun getChangePayload(oldItem: PeopleModel, newItem: PeopleModel): Any {
+            return oldItem.subscription != newItem.subscription
         }
     }
 

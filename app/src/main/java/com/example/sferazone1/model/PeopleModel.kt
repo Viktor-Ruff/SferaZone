@@ -10,5 +10,6 @@ data class PeopleModel(
     val id: Int,
     val name: String,
     val profileImage: String,
-    var status: Boolean
+    var subscription: Boolean,
+    var subscriber: Boolean
 )

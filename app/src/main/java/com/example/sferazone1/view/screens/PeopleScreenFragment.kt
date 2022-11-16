@@ -40,6 +40,7 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
     private lateinit var subscribersFilter: ListFilter
     private lateinit var subscriptionFilter: ListFilter
     private lateinit var mutuallyFilter: ListFilter
+    private lateinit var userService: UserService
 
 
     override fun onCreateView(
@@ -62,7 +63,9 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
         initNavigation()
         initViewPager2()
         initSearch()
+        adaptersListener()
     }
+
 
     private fun initAdapters() {
         subscribersAdapter = PeopleAdapter(this)
@@ -71,11 +74,27 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
     }
 
 
+    private fun adaptersListener() {
+
+        subscribersAdapter.setOnItemClickListener { user ->
+            updateUi(user)
+        }
+
+        subscriptionAdapter.setOnItemClickListener { user ->
+            updateUi(user)
+        }
+
+        mutuallyAdapter.setOnItemClickListener { user ->
+            updateUi(user)
+        }
+    }
+
+
     private fun initList() {
-        val userService = UserService()
-        subscribersList = userService.initPeopleList(40)
-        subscriptionList = userService.initPeopleList(10)
-        mutuallyList = userService.initPeopleList(5)
+        userService = UserService()
+        subscribersList = userService.initPeopleList(15)
+        subscriptionList = userService.subscriptionList(subscribersList)
+        mutuallyList = userService.mutuallyList(subscribersList)
     }
 
 
@@ -152,6 +171,22 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
     }
 
 
+    private fun updateUi(user: PeopleModel) {
+        val newList = mutableListOf<PeopleModel>()
+        val oldList = subscribersAdapter.currentList
+        oldList.forEach { oldItem ->
+            if (oldItem.id == user.id) {
+                newList.add(user)
+            } else {
+                newList.add(oldItem)
+            }
+        }
+        subscribersAdapter.submitList(newList)
+        subscriptionAdapter.submitList(userService.subscriptionList(newList).toMutableList())
+        mutuallyAdapter.submitList(userService.mutuallyList(newList).toMutableList())
+    }
+
+
     override fun clickedItem(people: PeopleModel) {
         /* findNavController().navigate(R.id.action_peopleScreenFragment_to_selectedUserScreenFragment)*/
     }
@@ -163,9 +198,9 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
 
     override fun onQueryTextChange(newText: String?): Boolean {
         if (newText != null) {
-            subscribersFilter.filterList(newText)
-            subscriptionFilter.filterList(newText)
-            mutuallyFilter.filterList(newText)
+            subscribersFilter.searchFilter(newText)
+            subscriptionFilter.searchFilter(newText)
+            mutuallyFilter.searchFilter(newText)
         }
 
         return true

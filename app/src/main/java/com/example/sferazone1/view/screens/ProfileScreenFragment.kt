@@ -14,6 +14,7 @@ import com.example.sferazone1.view.profileAdapters.ChroniclesAdapter
 import com.example.sferazone1.view.profileAdapters.MomentsAdapter
 import com.example.sferazone1.view.profileAdapters.UserImagesAdapter
 import com.example.sferazone1.databinding.FragmentProfileScreenBinding
+import com.example.sferazone1.model.PeopleModel
 import com.example.sferazone1.viewModel.UserService
 
 
@@ -71,5 +72,6 @@ class ProfileScreenFragment : Fragment() {
         binding.userChroniclesRecycler.adapter = ChroniclesAdapter(userService.initChroniclesList())
         binding.userChroniclesRecycler.stopScroll()
     }
+
 
 }

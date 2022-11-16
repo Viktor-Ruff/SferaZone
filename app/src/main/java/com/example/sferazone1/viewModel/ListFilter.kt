@@ -20,7 +20,7 @@ class ListFilter(listAdapter: PeopleAdapter, list: List<PeopleModel>) {
     }
 
 
-    fun filterList(text: String) {
+    fun searchFilter(text: String) {
 
         var filteredArrayList = ArrayList<PeopleModel>()
 
@@ -32,7 +32,6 @@ class ListFilter(listAdapter: PeopleAdapter, list: List<PeopleModel>) {
             }
         }
         listAdapter.setFilteredList(filteredArrayList)
-
     }
 
 }

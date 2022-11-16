@@ -11,19 +11,55 @@ import com.github.javafaker.Faker
  */
 class UserService {
 
-    fun initPeopleList(count:Int): List<PeopleModel> {
+    fun initPeopleList(count: Int): List<PeopleModel> {
+
+
         images.shuffle()
         val peopleList: List<PeopleModel>
         val faker: Faker = Faker.instance()
         peopleList = (1..count).map {
+
+            val randomSubscription = Math.random() * 10
+            val randomSubscriber = Math.random() * 10
+
             PeopleModel(
                 id = it,
                 name = faker.name().name(),
                 profileImage = images[it % images.size],
-                status = true
+                subscription = randomSubscription >= 5,
+                subscriber = true
             )
         }
         return peopleList
+    }
+
+
+    fun subscriptionList(list: List<PeopleModel>): List<PeopleModel> {
+
+        var subscriptionList = ArrayList<PeopleModel>()
+
+        for (people in list) {
+            if (people.subscription) {
+                subscriptionList.add(people)
+            }
+        }
+
+        return subscriptionList.toList()
+    }
+
+
+    fun mutuallyList(list: List<PeopleModel>): List<PeopleModel> {
+
+        var mutuallyList = ArrayList<PeopleModel>()
+
+        for (people in list) {
+            if (people.subscriber && people.subscription) {
+                mutuallyList.add(people)
+                println("${people.name}: ${people.subscriber} и ${people.subscription}")
+            }
+        }
+
+        return mutuallyList.toList()
     }
 
 
