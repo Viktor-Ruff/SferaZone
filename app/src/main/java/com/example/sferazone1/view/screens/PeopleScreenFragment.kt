@@ -92,7 +92,7 @@ class PeopleScreenFragment : Fragment(), PeopleAdapter.ClickListener,
 
     private fun initList() {
         userService = UserService()
-        subscribersList = userService.initPeopleList(15)
+        subscribersList = userService.initPeopleList(25)
         subscriptionList = userService.subscriptionList(subscribersList)
         mutuallyList = userService.mutuallyList(subscribersList)
     }
